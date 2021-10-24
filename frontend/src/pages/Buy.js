@@ -29,10 +29,10 @@ export const Buy = (props) => {
     >
       {active ?
         <>
-          <div className="bg-indigo-300 flex-1 p-4">
+          <div className="bg-black flex-1 p-4 text-white">
               <SearchSellers/>
           </div>
-          <div className="bg-green-300 flex-1">
+          <div className="bg-white flex-1 p-4 text-black">
               <ActiveDeals isBuyer = {true}></ActiveDeals>
           </div>
        </>
