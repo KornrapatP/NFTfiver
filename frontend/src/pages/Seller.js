@@ -37,7 +37,9 @@ export const Seller = ({
         />
       </CardContent>
       <CardActions>
-        <textarea className="border-2 border-grey mr-3" rows="2" cols="45" placeholder="Request"></textarea><button className="bg-blue-500 text-white font-bold py-1 px-2 rounded">Search</button>
+        <textarea className="border-2 border-grey mr-1" rows="2" cols="40" placeholder="Request"></textarea>
+        <textarea className="border-2 border-grey mr-1" rows="2" cols="10" placeholder="Amount $"></textarea>
+        <button className="bg-blue-500 text-white font-bold py-1 px-2 h-12 rounded">Offer</button>
       </CardActions>
     </Card>
   )
