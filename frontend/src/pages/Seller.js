@@ -12,6 +12,14 @@ export const Seller = ({
   description,
   work,
 }) => {
+
+  var images = []
+  for (var i = 0; i < work.length; i++) {
+    // note: we are adding a key prop here to allow react to uniquely identify each
+    // element in this array. see: https://reactjs.org/docs/lists-and-keys.html
+    images.push(<div><CardMedia component="img" height="140" src={work[i]} /> <br/></div>);
+}
+
   const [amount, setAmount] = useState("")
   const [rq, setRq] = useState("")
   const handleRequest = async () => {
@@ -30,13 +38,11 @@ export const Seller = ({
           Description: {description}
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Work: {work}
+          Work: {work.length} previous work found!
         </Typography>
-        <CardMedia
-          component="img"
-          height="140"
-          src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
-        />
+      
+        {images}
+        
       </CardContent>
       <CardActions>
         <textarea className="border-2 border-grey mr-1" rows="2" cols="40" placeholder="Request" value={rq} onChange={(event) => {setRq(event.target.value)}}></textarea>

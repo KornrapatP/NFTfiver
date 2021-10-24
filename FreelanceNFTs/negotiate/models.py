@@ -12,7 +12,7 @@ class Seller(models.Model):
 
 class Work(models.Model):
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
-    url = models.CharField(max_length=100, unique=True)
+    url = models.CharField(max_length=300, unique=True)
 
     def __str__(self) -> str:
         return str(self.seller) + ' ' + self.url
