@@ -1,6 +1,3 @@
-import Web3 from 'web3'
-import BigNumber from 'bignumber.js'
-
 class TransactionService {
   sendTx = async (tx: any, from: any, value: any) => {
     const sentTx = tx.send({ from, value })

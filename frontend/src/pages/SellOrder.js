@@ -21,6 +21,7 @@ export const SellOrder = () => {
   const [details, setDetails] = useState(null)
   const [file, setFile] = useState(null)
   const [imageURL, setImageURL] = useState(null)
+  const [counterOffer, setCounterOffer] = useState(0)
   useEffect(() => {
     async function setDeals() {
       const d = await transactionContractService.getActiveDeals(
@@ -31,16 +32,6 @@ export const SellOrder = () => {
     }
     setDeals()
   }, [account])
-
-  const handleCounterOrder = () => { }
-
-  const handleAcceptOffer = () => { }
-
-  const handleFileChange = (event) => {
-    setFile(Array.from(event.target.files)[0])
-  }
-
-
 
   const handleSubmitWork = async () => {
     if (file) {
@@ -98,6 +89,14 @@ export const SellOrder = () => {
       submitWork()
     }
   }, [imageURL])
+  console.log(details)
+  const handleCounterOrder = async () => {
+    await transactionContractService.counterOffer(params.buyer, counterOffer)
+  }
+
+  const handleAcceptOffer = async () => {
+      await transactionContractService.acceptOffer(params.buyer)
+  }
 
   return (
     <div
@@ -163,10 +162,12 @@ export const SellOrder = () => {
                 sellerAccepted: {details.sellerAccepted ? 'TRUE' : 'FALSE'}
               </Typography>
               <div style={{ flexDirection: 'row', width: '100%', height: 100 }}>
+                <input type="number" value={counterOffer} onChange={(event) => {setCounterOffer(event.target.value)}}></input>
                 <button onClick={handleCounterOrder}>Counter Offer</button><br />
                 <button onClick={handleAcceptOffer}>Accept Offer</button><br />
                 <input type="file" onChange={handleFileChange} />
                 <button onClick={handleSubmitWork}> Submit Work to blockchain!</button>
+                
               </div>
               <CardMedia
                 component="img"

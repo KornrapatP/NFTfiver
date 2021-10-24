@@ -20,6 +20,7 @@ export const BuyOrder = () => {
   } = useWeb3React()
   const params = useParams()
   const [details, setDetails] = useState(null)
+  const [newOffer, setNewOffer] = useState(0)
   useEffect(() => {
     async function setDeals() {
       const d = await transactionContractService.getActiveDeals(
@@ -31,7 +32,19 @@ export const BuyOrder = () => {
     setDeals()
   }, [account])
 
-  console.log(details)
+  const handleNewOffer = async () => {
+    await transactionContractService.newOffer(params.seller, newOffer)
+  }
+  const handleAcceptCounterOffer = async () => {
+    await transactionContractService.acceptCounterOffer(params.seller)
+  }
+  const handleAcceptWork = async () => {
+    await transactionContractService.acceptWork(params.seller)
+  }
+  const handleRejectWork = async () => {
+    await transactionContractService.rejectWork(params.seller)
+  }
+
   return (
     <div
       style={{
@@ -94,6 +107,13 @@ export const BuyOrder = () => {
               >
                 sellerAccepted: {details.sellerAccepted ? 'TRUE' : 'FALSE'}
               </Typography>
+              <div style={{ flexDirection: 'row', width: '100%', height: 100 }}>
+                <input type="number" value={newOffer} onChange={(event) => {setNewOffer(event.target.value)}}></input>
+                <button onClick={handleNewOffer}>New Offer</button>
+                <button onClick={handleAcceptCounterOffer}>Accept Counter Offer</button>
+                <button onClick={handleAcceptWork}>Accept Work</button>
+                <button onClick={handleRejectWork}>Reject Work</button>
+              </div>
               <CardMedia
                 component="img"
                 height={50}
