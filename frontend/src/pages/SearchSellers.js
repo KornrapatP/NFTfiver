@@ -43,13 +43,13 @@ export const SearchSellers = () => {
   }
 
   return (
-    <div>
+    <>
       <h2>Search</h2>
-      <textarea className="border-2 border-black" rows="1" cols="50" placeholder="Terms: eg icon" value={search} onChange={handleChangeSearch}></textarea><br />
-      <>
-        {valueChanged ? <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded" onClick={handleSetInfo}>Search</button> : <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed" onClick={handleSetInfo}>Search</button>}
-      </>
-      {clickSearch ? <><h2>Found {count} results</h2>{result.map(function(d, idx){return <Seller wallet_address={d.wallet_address} services={d.services} description = {d.description} work={d.work}/>})}</> : null}
-    </div>
+      <textarea className="float-left border-2 border-black" rows="1" cols="40" placeholder="Terms: eg icon" value={search} onChange={handleChangeSearch}></textarea><br />
+      <div className="float-right">
+        {valueChanged ? <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onClick={handleSetInfo}>Search</button> : <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed" disabled>Search</button>}
+      </div>
+      {clickSearch ? <><h3>Found {count} results</h3>{result.map(function(d, idx){return <Seller wallet_address={d.wallet_address} services={d.services} description = {d.description} work={d.work}/>})}</> : null}
+    </>
   )
 }

@@ -41,7 +41,7 @@ export const Sell = (props) => {
         <div style={{width:"100%"}}>
           <br></br>
           <center>         
-          <h2> Please register your crpyto wallet with MetaMask.</h2>
+          <h2> Please register your crypto wallet with MetaMask.</h2>
           </center>
         </div>
       }

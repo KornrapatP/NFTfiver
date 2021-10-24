@@ -57,10 +57,10 @@ export const NavigationBar = () => {
           <Nav.Item><Nav.Link as={Link} to="/Sell">Sell</Nav.Link></Nav.Item>
         </Nav>
       </Navbar.Collapse>
-      <div className="text-white">
-        {active ? <span>Connected with <b>{account}</b></span> : <span>Not connected</span>}
+      <div className="text-white ml-4 mr-4">
+        {active ? <span >Connected with <b>{account}</b></span> : <span>Not connected</span>}
       </div>
-      {active ? <button onClick={disconnect} className="text-blue-600">Disconnect</button> : <button onClick = {connect} className="text-red-600">Connect to Metamask</button>}
+      {active ? <button onClick={disconnect} className="text-red-400">Disconnect</button> : <button onClick = {connect} className="text-blue-400">Connect to Metamask</button>}
     </Navbar>
   </Styles>
   )

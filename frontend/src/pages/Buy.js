@@ -22,17 +22,17 @@ export const Buy = (props) => {
     <div
       style={{
         display: 'flex',
-        height: 1000,
+        height: '100%',
+        minHeight: 1000,
         flexDirection: 'row',
       }}
     >
       {active ?
         <>
-          <div style={{ height: '100%', backgroundColor: 'white', flex:1  }}>
+          <div className="bg-indigo-300 flex-1 p-4">
               <SearchSellers/>
-              <ArtistList/>
           </div>
-          <div style={{ height: '100%', backgroundColor: 'green', flex:1 }}>
+          <div className="bg-green-300 flex-1">
               <ActiveDeals isBuyer = {true}></ActiveDeals>
           </div>
        </>
@@ -40,7 +40,7 @@ export const Buy = (props) => {
         <div style={{width:"100%"}}>
           <br></br>
           <center>         
-          <h2> Please register your crpyto wallet with MetaMask.</h2>
+          <h2> Please register your crypto wallet with MetaMask.</h2>
           </center>
         </div>
       }

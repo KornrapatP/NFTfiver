@@ -16,7 +16,7 @@ export const Seller = ({
   work,
 }) => {
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card className="m-2" sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Wallet Address: {wallet_address}
@@ -37,8 +37,7 @@ export const Seller = ({
         />
       </CardContent>
       <CardActions>
-        <textarea className="border-2 border-grey" rows="3" cols="10" placeholder="Request"></textarea><button className="bg-blue-500 text-white font-bold py-1 px-2 rounded">Search</button>
-        <Button size="small">Learn More</Button>
+        <textarea className="border-2 border-grey mr-3" rows="2" cols="45" placeholder="Request"></textarea><button className="bg-blue-500 text-white font-bold py-1 px-2 rounded">Search</button>
       </CardActions>
     </Card>
   )
