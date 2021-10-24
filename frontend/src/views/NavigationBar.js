@@ -50,7 +50,7 @@ export const NavigationBar = () => {
   return (
   <Styles>
     <Navbar expand="lg">
-      <Navbar.Brand href="/">Project Name</Navbar.Brand>
+      <Navbar.Brand href="/">NFTFivver</Navbar.Brand>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{alignItems: 'flex-start'}}>
           <Nav.Item><Nav.Link as={Link} to="/">Buy</Nav.Link></Nav.Item> 

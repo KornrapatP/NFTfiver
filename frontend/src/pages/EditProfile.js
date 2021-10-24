@@ -69,7 +69,7 @@ export const EditProfile = () => {
       <span className="pr-2">Description: </span>
       <textarea value={description} className="text-black" onChange={handleChangeDescription}></textarea><br />
       <div className="mt-4">
-        {valueChanged ? <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onClick={handleSetInfo}>Search</button> : <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed" disabled>Search</button>}
+        {valueChanged ? <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onClick={handleSetInfo}>Submit</button> : <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed" disabled>Submit</button>}
       </div>
     </div>
   )

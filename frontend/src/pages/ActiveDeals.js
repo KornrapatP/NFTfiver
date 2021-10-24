@@ -24,7 +24,7 @@ export const ActiveDeals = ({isBuyer}) => {
   useEffect(() => {
     if (active) {
       async function setPartners() {
-        setDealPartners(await transactionContractService.getDealPartners(account))
+        setDealPartners(Array.from(new Set(await transactionContractService.getDealPartners(account))))
       }
       setPartners()
     }
