@@ -5,6 +5,7 @@ import { NavigationBar } from './views/NavigationBar'
 import { Sell } from './pages/Sell'
 import { Buy } from './pages/Buy'
 import { NoMatch } from './NoMatch'
+import './index.css';
 
 import { Web3ReactProvider } from '@web3-react/core'
 import Web3 from 'web3'
