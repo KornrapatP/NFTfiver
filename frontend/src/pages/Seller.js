@@ -1,13 +1,10 @@
-import * as React from 'react'
-import Box from '@mui/material/Box'
+import { useState } from 'react'
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
-import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { useHistory } from 'react-router-dom'
 import CardMedia from '@mui/material/CardMedia'
-import { web3Store } from '../stores/web3Store'
+import { transactionContractService } from '../services'
 
 export const Seller = ({
   wallet_address,
@@ -15,6 +12,11 @@ export const Seller = ({
   description,
   work,
 }) => {
+  const [amount, setAmount] = useState("")
+  const [rq, setRq] = useState("")
+  const handleRequest = async () => {
+    await transactionContractService.offer(rq, wallet_address, amount)
+  }
   return (
     <Card className="m-2" sx={{ minWidth: 275 }}>
       <CardContent>
@@ -37,9 +39,9 @@ export const Seller = ({
         />
       </CardContent>
       <CardActions>
-        <textarea className="border-2 border-grey mr-1" rows="2" cols="40" placeholder="Request"></textarea>
-        <textarea className="border-2 border-grey mr-1" rows="2" cols="10" placeholder="Amount $"></textarea>
-        <button className="bg-blue-500 text-white font-bold py-1 px-2 h-12 rounded">Offer</button>
+        <textarea className="border-2 border-grey mr-1" rows="2" cols="40" placeholder="Request" value={rq} onChange={(event) => {setRq(event.target.value)}}></textarea>
+        <textarea className="border-2 border-grey mr-1" rows="2" cols="10" placeholder="Amount $" value={amount} onChange={(event) => {setAmount(event.target.value)}}></textarea>
+        <button className="bg-blue-500 text-white font-bold py-1 px-2 h-12 rounded" onClick={handleRequest}>Offer</button>
       </CardActions>
     </Card>
   )

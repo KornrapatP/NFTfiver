@@ -19,7 +19,7 @@ class TransactionContractService {
     getDealPartners = async (address: string) => {
         const transaction = contractService.getContract(Transaction, TransactionContractAddress)
         const retVal:any[] = []
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 1000000000; i++) {
             try {
                 console.log(i)
                 retVal.push(await transaction.methods.activeDeals(address,i).call())
