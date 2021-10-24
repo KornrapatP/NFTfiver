@@ -9,6 +9,8 @@ import './index.css';
 
 import { Web3ReactProvider } from '@web3-react/core'
 import Web3 from 'web3'
+import { BuyOrder } from './pages/BuyOrder'
+import { SellOrder } from './pages/SellOrder'
 
 function getLibrary(provider) {
   return new Web3(provider)
@@ -22,6 +24,8 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Buy} />
         <Route path="/sell" component={Sell} />
+        <Route path="/buy/:seller" component={BuyOrder} />
+        <Route path="/selling/:buyer" component={SellOrder} />
         <Route component={NoMatch} />
       </Switch>
     </Router>

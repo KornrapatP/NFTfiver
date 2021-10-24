@@ -33,11 +33,11 @@ export const Artwork = ({
     if (buyer == web3Store.account) {
         history.push('/buy/' + seller)
     } else {
-        history.push('/sell/' + buyer)
+        history.push('/selling/' + buyer)
     }
   }
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card onClick={handleClick} sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           buyer: {buyer}
