@@ -60,7 +60,7 @@ export const Artwork = ({
         <CardMedia
           component="img"
           height="140"
-          src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
+          src={ uri ? uri : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"}
         />
       </CardContent>
       <CardActions>

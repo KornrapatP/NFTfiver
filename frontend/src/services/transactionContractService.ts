@@ -6,8 +6,9 @@ import { contractService } from './contractService'
 import { transactionService } from './transactionService'
 
 import Transaction from '../data/contracts/Transaction.json'
+import ERC721MetadataMintable from '../data/contracts/ERC721MetadataMintable.json'
 
-import { MAX_UINT256, TransactionContractAddress } from '../constants/constants'
+import { ERC721ContractAddress, MAX_UINT256, TransactionContractAddress } from '../constants/constants'
 import { web3Store } from '../stores/web3Store'
 
 
@@ -62,6 +63,8 @@ class TransactionContractService {
     submitWork = async (buyer: string, uri: string) => {
         const transaction = contractService.getContract(Transaction, TransactionContractAddress)
         await transactionService.sendTx(transaction.methods.submitWork(buyer, uri), web3Store.account, 0)
+        const ERC721contract = contractService.getContract(ERC721MetadataMintable, ERC721ContractAddress)
+        await transactionService.sendTx(ERC721contract.methods.approve(TransactionContractAddress, await ERC721contract.methods.totalSupply().call()), web3Store.account, 0)
     }
 
     acceptWork = async (seller: string) => {

@@ -117,7 +117,7 @@ export const BuyOrder = () => {
               <CardMedia
                 component="img"
                 height={50}
-                src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
+                src={details.uri ? details.uri : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"}
               />
             </CardContent>
           </Card>
