@@ -2,6 +2,8 @@ import { Input, TextField } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useWeb3React } from "@web3-react/core"
+import { transactionContractService } from '../services';
+import {File} from 'nft.storage'
 const GridWrapper = styled.div`
   display: grid;
   grid-gap: 10px;
@@ -16,6 +18,7 @@ export const EditProfile = () => {
   const [services, setServices] = useState('')
   const [description, setDescription] = useState('')
   const [valueChanged, setValueChanged] = useState(false)
+  const [file, setFile] = useState(null)
   useEffect(() => {
     console.log("Loaded")
     const getInfo = () => {
@@ -56,6 +59,25 @@ export const EditProfile = () => {
     }
     setInfo()
   }
+
+  const handleChangeFile = async (event) => {
+    setFile(event.target.value)
+    const files = Array.from(event.target.files)
+    console.log(files)
+    console.log('In here')
+    console.log()
+    if (file) {  
+      console.log(file)    
+      console.log(await transactionContractService.addImage({
+        name : "adasd",
+        description : "sfsfgsdf",
+        image : files[0],
+        type : "image/jpg"
+      }))
+
+    }
+  }
+
   return (
     <div>
       <h2>Edit Page</h2> <br />
@@ -64,7 +86,9 @@ export const EditProfile = () => {
       <input value={services} onChange={handleChangeServices}></input><br /><br />
       Description :
       <textarea value={description} onChange={handleChangeDescription}></textarea><br />
-      <button className="disabled:opacity-50" onClick={handleSetInfo} > {valueChanged ? "Submit" : ""} </button>
+      <button className="disabled:opacity-50" onClick={handleSetInfo} > {valueChanged ? "Submit" : ""} </button><br/>
+      <img src="https://media.wired.com/photos/5b8999943667562d3024c321/master/w_120,c_limit/trash2-01.jpg"></img> <br/>
+      <input type="file" onChange={handleChangeFile}></input>
     </div>
   )
 }
