@@ -33,9 +33,9 @@ export const SellOrder = () => {
     setDeals()
   }, [account])
 
-const handleFileChange = (event) => {
-  setFile(Array.from(event.target.files)[0])
-}
+  const handleFileChange = (event) => {
+    setFile(Array.from(event.target.files)[0])
+  }
 
   const handleSubmitWork = async () => {
     if (file) {
@@ -43,21 +43,21 @@ const handleFileChange = (event) => {
         name: file.name,
         description: file.name,
         image: file,
-        type: file.type
+        type: file.type,
       })
       // response = response.replace("metadata.json", file.name)
-      response = response.replace("ipfs://", "https://ipfs.io/ipfs/")
-      console.log("debug : " + response)      
+      response = response.replace('ipfs://', 'https://ipfs.io/ipfs/')
+      console.log('debug : ' + response)
 
       const getImageURLFromBlockchain = () => {
         fetch(response)
-          .then(response => response.json())
-          .then(data => {
+          .then((response) => response.json())
+          .then((data) => {
             let URL = data.image
-            URL = URL.replace("ipfs://", "https://ipfs.io/ipfs/")            
+            URL = URL.replace('ipfs://', 'https://ipfs.io/ipfs/')
             setImageURL(URL)
           })
-          .catch(error => console.log);
+          .catch((error) => console.log)
       }
       getImageURLFromBlockchain()
     }
@@ -66,15 +66,20 @@ const handleFileChange = (event) => {
   useEffect(() => {
     if (imageURL) {
       const regWork = () => {
-        fetch("http://127.0.0.1:8000/seller/registerWork?wallet_address=" + account + "&url=" + imageURL)
-          .then(response => response.json())
-          .then(data => {
+        fetch(
+          'http://127.0.0.1:8000/seller/registerWork?wallet_address=' +
+            account +
+            '&url=' +
+            imageURL,
+        )
+          .then((response) => response.json())
+          .then((data) => {
             console.log(data)
-            console.log("Called?")
+            console.log('Called?')
           })
-          .catch(error => console.log);
+          .catch((error) => console.log)
       }
-      console.log("HEREEEEE")
+      console.log('HEREEEEE')
       regWork()
 
       const submitWork = async () => {
@@ -89,7 +94,7 @@ const handleFileChange = (event) => {
   }
 
   const handleAcceptOffer = async () => {
-      await transactionContractService.acceptOffer(params.buyer)
+    await transactionContractService.acceptOffer(params.buyer)
   }
 
   return (
@@ -112,7 +117,6 @@ const handleFileChange = (event) => {
         >
           <Card sx={{ minWidth: 275 }}>
             <CardContent style={{ flex: 1 }}>
-
               <Typography
                 sx={{ fontSize: 14 }}
                 color="text.secondary"
@@ -156,17 +160,43 @@ const handleFileChange = (event) => {
                 sellerAccepted: {details.sellerAccepted ? 'TRUE' : 'FALSE'}
               </Typography>
               <div style={{ flexDirection: 'row', width: '100%', height: 100 }}>
-                <input className="border-2 border-black" type="number" value={counterOffer} onChange={(event) => {setCounterOffer(event.target.value)}}></input>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-1 m-2 border border-blue-700 rounded" onClick={handleCounterOrder}>Counter Offer</button><br />
-                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-1 m-2 border border-blue-700 rounded" onClick={handleAcceptOffer}>Accept Offer</button><br />
+                <input
+                  className="border-2 border-black"
+                  type="number"
+                  value={counterOffer}
+                  onChange={(event) => {
+                    setCounterOffer(event.target.value)
+                  }}
+                ></input>
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-1 m-2 border border-blue-700 rounded"
+                  onClick={handleCounterOrder}
+                >
+                  Counter Offer
+                </button>
+                <button
+                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-1 m-2 border border-blue-700 rounded"
+                  onClick={handleAcceptOffer}
+                >
+                  Accept Offer
+                </button>
                 <input type="file" onChange={handleFileChange} />
-                <button className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-1 px-1 m-2 border border-blue-700 rounded" onClick={handleSubmitWork}> Submit Work to blockchain!</button>
-                
+                <button
+                  className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-1 px-1 m-2 border border-blue-700 rounded"
+                  onClick={handleSubmitWork}
+                >
+                  {' '}
+                  Submit Work to blockchain!
+                </button>
               </div>
               <CardMedia
                 component="img"
                 height={50}
-                src={details.uri ? details.uri : "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"}
+                src={
+                  details.uri
+                    ? details.uri
+                    : 'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640'
+                }
               />
             </CardContent>
           </Card>
