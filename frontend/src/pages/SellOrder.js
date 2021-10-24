@@ -19,6 +19,7 @@ export const SellOrder = () => {
   } = useWeb3React()
   const params = useParams()
   const [details, setDetails] = useState(null)
+  const [counterOffer, setCounterOffer] = useState(0)
   useEffect(() => {
     async function setDeals() {
       const d = await transactionContractService.getActiveDeals(
@@ -31,9 +32,13 @@ export const SellOrder = () => {
   }, [account])
 
   console.log(details)
-  const handleCounterOrder = () => {}
+  const handleCounterOrder = async () => {
+    await transactionContractService.counterOffer(params.buyer, counterOffer)
+  }
 
-  const handleAcceptOffer = () => {}
+  const handleAcceptOffer = async () => {
+      await transactionContractService.acceptOffer(params.buyer)
+  }
   const handleSubmitWork = () => {}
 
   return (
@@ -100,6 +105,7 @@ export const SellOrder = () => {
                 sellerAccepted: {details.sellerAccepted ? 'TRUE' : 'FALSE'}
               </Typography>
               <div style={{ flexDirection: 'row', width: '100%', height: 100 }}>
+                <input type="number" value={counterOffer} onChange={(event) => {setCounterOffer(event.target.value)}}></input>
                 <button onClick={handleCounterOrder}>Counter Offer</button>
                 <button onClick={handleAcceptOffer}>Accept Offer</button>
                 <button onClick={handleSubmitWork}>Submit Work</button>
