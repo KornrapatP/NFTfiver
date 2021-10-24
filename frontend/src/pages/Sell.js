@@ -22,21 +22,20 @@ export const Sell = (props) => {
     <div
       style={{
         display: 'flex',
-        height: 1000,
+        height: '100%',
+        minHeight: 1000,
         flexDirection: 'row',
       }}
     >
       {active ?
-        <div className="row_seller">
-          <div className="column_seller">
-            {/*  style={{ height: '100%', backgroundColor: 'white', flex: 1 }} */}
-            <ActiveDeals isBuyer={false}>
-            </ActiveDeals>
+        <>
+          <div className="bg-white flex-1 p-4 text-black">
+            <ActiveDeals isBuyer={false}></ActiveDeals>
           </div>
-          <div className="column_seller">
-            <EditProfile></EditProfile>
+          <div className="bg-black flex-1 p-4 text-white">
+            <EditProfile/>
           </div>
-        </div>
+        </>
         :
         <div style={{width:"100%"}}>
           <br></br>

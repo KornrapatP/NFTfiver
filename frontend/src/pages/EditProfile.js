@@ -18,7 +18,7 @@ export const EditProfile = () => {
   const [services, setServices] = useState('')
   const [description, setDescription] = useState('')
   const [valueChanged, setValueChanged] = useState(false)
-  const [file, setFile] = useState(null)
+
   useEffect(() => {
     console.log("Loaded")
     const getInfo = () => {
@@ -60,35 +60,17 @@ export const EditProfile = () => {
     setInfo()
   }
 
-  const handleChangeFile = async (event) => {
-    setFile(event.target.value)
-    const files = Array.from(event.target.files)
-    console.log(files)
-    console.log('In here')
-    console.log()
-    if (file) {  
-      console.log(file)    
-      console.log(await transactionContractService.addImage({
-        name : "adasd",
-        description : "sfsfgsdf",
-        image : files[0],
-        type : "image/jpg"
-      }))
-
-    }
-  }
-
   return (
     <div>
       <h2>Edit Page</h2> <br />
-      <p> Crypto Wallet Address : {account} </p>
-      Services offered :
-      <input value={services} onChange={handleChangeServices}></input><br /><br />
-      Description :
-      <textarea value={description} onChange={handleChangeDescription}></textarea><br />
-      <button className="disabled:opacity-50" onClick={handleSetInfo} > {valueChanged ? "Submit" : ""} </button><br/>
-      <img src="https://ipfs.io/ipfs/bafybeibbmxfn4uggk4zcyhmph3eqrqmsrponsarsw5g2o7d6dcrzkyjtfm/itachi3.jpg"></img> <br/>
-      <input type="file" onChange={handleChangeFile}></input>
+      <p> Crypto Wallet Address: {account} </p>
+      <span className="pr-2">Services offered: </span>
+      <input value={services} className="text-black" onChange={handleChangeServices}></input><br /><br />
+      <span className="pr-2">Description: </span>
+      <textarea value={description} className="text-black" onChange={handleChangeDescription}></textarea><br />
+      <div className="mt-4">
+        {valueChanged ? <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onClick={handleSetInfo}>Search</button> : <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed" disabled>Search</button>}
+      </div>
     </div>
   )
 }
