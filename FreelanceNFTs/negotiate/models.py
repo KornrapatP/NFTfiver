@@ -15,6 +15,6 @@ class Work(models.Model):
     url = models.CharField(max_length=100, unique=True)
 
     def __str__(self) -> str:
-        return self.seller + ' ' + self.url
+        return str(self.seller) + ' ' + self.url
 
 
