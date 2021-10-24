@@ -6,7 +6,7 @@ add description
 ## Technical Description
 This project is made up of 3 main parts: the frontend located in the 'frontend' folder, backend in the 'FreelanceNFTs' folder, and the smart contracts in the 'contracts' folder. 
 
-The frontend is made using the React framework along with styling tools such as tailwindcss and materialUI. Main pages of the frontend is located in the 'erc/pages' folder, smaller components in 'src/view', web-wide data in 'src/stores', contract interface in 'services', and relevant constants in 'src/constants'.
+The frontend is made using the React framework along with styling tools such as tailwindcss and materialUI. Main pages of the frontend is located in the 'erc/pages' folder, smaller components in 'src/view', web-wide data in 'src/stores', contract interface using web3 in 'services', and relevant constants in 'src/constants'.
 
 The backend.........
 
