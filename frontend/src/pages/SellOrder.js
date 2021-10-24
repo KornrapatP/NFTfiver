@@ -60,32 +60,22 @@ const handleFileChange = (event) => {
           .catch(error => console.log);
       }
       getImageURLFromBlockchain()
-      
-      // const registerWork = async () => {
-      //   fetch(imageURL)
-      //     .then(resp => resp.json())
-      //     .then(data => {
-      //       console.log(data)
-      //       console.log("Called?")
-      //     })
-      //     .catch(error => console.log);
-      // }
-      // registerWork()
     }
   }
 
   useEffect(() => {
     if (imageURL) {
-      const registerWork = async () => {
-        fetch(imageURL)
-          .then(resp => resp.json())
+      const regWork = () => {
+        fetch("http://127.0.0.1:8000/seller/registerWork?wallet_address=" + account + "&url=" + imageURL)
+          .then(response => response.json())
           .then(data => {
             console.log(data)
             console.log("Called?")
           })
           .catch(error => console.log);
       }
-      registerWork()
+      console.log("HEREEEEE")
+      regWork()
 
       const submitWork = async () => {
         await transactionContractService.submitWork(params.buyer, imageURL)
