@@ -5,6 +5,7 @@ import { ActiveDeals } from './ActiveDeals'
 import { ArtistList } from './ArtistList'
 import { EditProfile } from './EditProfile'
 import { useWeb3React } from "@web3-react/core"
+import { SearchSellers } from "./SearchSellers"
 const GridWrapper = styled.div`
   display: grid;
   grid-gap: 10px;
@@ -28,7 +29,8 @@ export const Buy = (props) => {
       {active ?
         <>
           <div style={{ height: '100%', backgroundColor: 'white', flex:1  }}>
-              <ArtistList></ArtistList>
+              <SearchSellers/>
+              <ArtistList/>
           </div>
           <div style={{ height: '100%', backgroundColor: 'green', flex:1 }}>
               <ActiveDeals isBuyer = {true}></ActiveDeals>
