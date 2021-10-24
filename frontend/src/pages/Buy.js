@@ -31,7 +31,7 @@ export const Buy = (props) => {
               <ArtistList></ArtistList>
           </div>
           <div style={{ height: '100%', backgroundColor: 'green', flex:1 }}>
-              <ActiveDeals></ActiveDeals>
+              <ActiveDeals isBuyer = {true}></ActiveDeals>
           </div>
        </>
         :
