@@ -33,6 +33,10 @@ export const SellOrder = () => {
     setDeals()
   }, [account])
 
+const handleFileChange = (event) => {
+  setFile(Array.from(event.target.files)[0])
+}
+
   const handleSubmitWork = async () => {
     if (file) {
       let response = await transactionContractService.addImage({
