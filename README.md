@@ -1,7 +1,14 @@
 # NFTfiver
 
 ## Welcome to our CalHacks project!
-add description
+Guide to trying it out for yourself! 
+1) Make sure you have all the dependencies and requirements installed. 
+2) Open terminal and cd to NFTfiver/FreelanceNFTs/ Use `python manage.py runserver` to launch Django Server. Alternatively, deploy this server in Azure or your preferred choice of cloud backend computing solution.
+3) Open terminal and cd to NFTfiver/frontend/ Use yarn to install dependencies, and run `yarn start` to start the frontend server.
+4) Download the MetaMask extension on Chrome
+5) Connect your addresses and use it to connect on the frontend.
+6) Once that is done, you're fully authorized to buy and sell artworks and NFTs on our platform!
+7) Feel free to refer to our youtube video to see our demo!
 
 ## Technical Description
 This project is made up of 3 main parts: the frontend located in the 'frontend' folder, backend in the 'FreelanceNFTs' folder, and the smart contracts in the 'contracts' folder. 
