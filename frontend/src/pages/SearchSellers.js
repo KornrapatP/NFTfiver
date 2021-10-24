@@ -2,6 +2,8 @@ import { Input, TextField } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useWeb3React } from "@web3-react/core"
+import { Seller } from './Seller'
+
 const GridWrapper = styled.div`
   display: grid;
   grid-gap: 10px;
@@ -47,9 +49,7 @@ export const SearchSellers = () => {
       <>
         {valueChanged ? <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded" onClick={handleSetInfo}>Search</button> : <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed" onClick={handleSetInfo}>Search</button>}
       </>
-      <>
-        {clickSearch ? <><h2>Found {count} results</h2>{result.map(r => <ul key={r.wallet_address}><li key="Wallet Address">Wallet Address: {r.wallet_address}</li><li key="Services">Services: {r.services}</li><li key="Description">Description: {r.description}</li><li key="Work">Work: {r.work}</li></ul>)}</> : <></>}
-      </>
+      {clickSearch ? <><h2>Found {count} results</h2>{result.map(function(d, idx){return <Seller wallet_address={d.wallet_address} services={d.services} description = {d.description} work={d.work}/>})}</> : null}
     </div>
   )
 }

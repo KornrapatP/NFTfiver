@@ -29,8 +29,8 @@ export const Buy = (props) => {
       {active ?
         <>
           <div style={{ height: '100%', backgroundColor: 'white', flex:1  }}>
-              <SearchSellers></SearchSellers>
-              <ArtistList></ArtistList>
+              <SearchSellers/>
+              <ArtistList/>
           </div>
           <div style={{ height: '100%', backgroundColor: 'green', flex:1 }}>
               <ActiveDeals isBuyer = {true}></ActiveDeals>
