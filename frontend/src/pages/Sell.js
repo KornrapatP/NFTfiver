@@ -27,13 +27,13 @@ export const Sell = (props) => {
       }}
     >
       {active ?
-        <div class="row_seller">
-          <div class="column_seller">
+        <div className="row_seller">
+          <div className="column_seller">
             {/*  style={{ height: '100%', backgroundColor: 'white', flex: 1 }} */}
             <ActiveDeals isBuyer={false}>
             </ActiveDeals>
           </div>
-          <div class="column_seller">
+          <div className="column_seller">
             <EditProfile></EditProfile>
           </div>
         </div>

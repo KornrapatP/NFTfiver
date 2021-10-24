@@ -13,19 +13,18 @@ const GridWrapper = styled.div`
 `;
 export const EditProfile = () => {
   const { active, account, library, connector, activate, deactivate } = useWeb3React()
-  
+  const [services, setServices] = useState('')
+  const [description, setDescription] = useState('')
   useEffect(() => {
     console.log("Loaded")
-    const getInfo = () => {
-      // Simple POST request with a JSON body using fetch
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ wallet_address: account })
-      };
-      fetch("http://127.0.0.1:8000/seller/getInfo?wallet_address=chris")
+    const getInfo = () => {      
+      fetch("http://127.0.0.1:8000/seller/getInfo?wallet_address="+"chris")
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+          console.log(data)
+          setServices(data.services)
+          setDescription(data.description)
+        })
         .catch(error => console.log);
     }
     getInfo()
@@ -33,16 +32,20 @@ export const EditProfile = () => {
   }, [active, account])
 
   const [a, setA] = useState('a')
-  const handleChange = (event) => {
-    setA(event.target.value)
+  const handleChangeServices = (event) => {
+    setServices(event.target.value)
+  }
+  const handleChangeDescription = (event) => {
+    setDescription(event.target.value)
   }
   return (
-    <GridWrapper>
-      <h2>Edit {account} Page</h2>
-      <p>State at ceiling lay on arms while you're using the keyboard so this human feeds me.</p>
-      <p>I am a kitty cat, sup, feed me, no cares in the world</p>
-      <p>Meow meow, I tell my human purr for no reason but to chase after</p>
-      <TextField value={a} onChange={handleChange}></TextField>
-    </GridWrapper>
+    <div>
+      <h2>Edit Page</h2> <br/>
+      <p> Crypto Wallet Address : {account} </p> <br/>
+      Services offered :    
+      <input value={services} onChange={handleChangeServices}></input><br/>
+      Description :       
+      <input value={description} onChange={handleChangeDescription}></input><br/>
+    </div>
   )
 }
