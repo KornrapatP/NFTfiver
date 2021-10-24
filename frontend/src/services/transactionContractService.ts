@@ -15,11 +15,17 @@ const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDN
 const client = new NFTStorage({ token: apiKey })
 
 class TransactionContractService {
-
     getDealPartners = async (address: string) => {
         const transaction = contractService.getContract(Transaction, TransactionContractAddress)
-        const retVal = await transaction.methods.activeDeals(address).call()
-        return retVal
+        const retVal:any[] = []
+        for (let i = 0; i < 3; i++) {
+            try {
+                console.log(i)
+                retVal.push(await transaction.methods.activeDeals(address,i).call())
+            } catch (e) {
+                return retVal
+            }
+        }
     }
 
     getActiveDeals = async (buyer: string, seller: string) => {

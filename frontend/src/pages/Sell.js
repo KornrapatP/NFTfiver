@@ -30,7 +30,7 @@ export const Sell = (props) => {
         <div class="row_seller">
           <div class="column_seller">
             {/*  style={{ height: '100%', backgroundColor: 'white', flex: 1 }} */}
-            <ActiveDeals>
+            <ActiveDeals isBuyer={false}>
             </ActiveDeals>
           </div>
           <div class="column_seller">
