@@ -157,8 +157,8 @@ const handleFileChange = (event) => {
               </Typography>
               <div style={{ flexDirection: 'row', width: '100%', height: 100 }}>
                 <input type="number" value={counterOffer} onChange={(event) => {setCounterOffer(event.target.value)}}></input>
-                <button onClick={handleCounterOrder}>Counter Offer</button><br />
-                <button onClick={handleAcceptOffer}>Accept Offer</button><br />
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-1 m-2 border border-blue-700 rounded" onClick={handleCounterOrder}>Counter Offer</button><br />
+                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-1 m-2 border border-blue-700 rounded" onClick={handleAcceptOffer}>Accept Offer</button><br />
                 <input type="file" onChange={handleFileChange} />
                 <button onClick={handleSubmitWork}> Submit Work to blockchain!</button>
                 

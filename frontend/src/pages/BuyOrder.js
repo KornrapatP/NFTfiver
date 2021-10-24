@@ -108,11 +108,11 @@ export const BuyOrder = () => {
                 sellerAccepted: {details.sellerAccepted ? 'TRUE' : 'FALSE'}
               </Typography>
               <div style={{ flexDirection: 'row', width: '100%', height: 100 }}>
-                <input type="number" value={newOffer} onChange={(event) => {setNewOffer(event.target.value)}}></input>
-                <button onClick={handleNewOffer}>New Offer</button>
-                <button onClick={handleAcceptCounterOffer}>Accept Counter Offer</button>
-                <button onClick={handleAcceptWork}>Accept Work</button>
-                <button onClick={handleRejectWork}>Reject Work</button>
+                <input className="border-2 border-black" type="number" value={newOffer} onChange={(event) => {setNewOffer(event.target.value)}}></input>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-1 m-2 border border-blue-700 rounded" onClick={handleNewOffer}>New Offer</button>
+                <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-1 m-2 border border-blue-700 rounded" onClick={handleAcceptCounterOffer}>Accept Counter Offer</button>
+                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-1 m-2 border border-blue-700 rounded" onClick={handleAcceptWork}>Accept Work</button>
+                <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-1 m-2 border border-blue-700 rounded" onClick={handleRejectWork}>Reject Work</button>
               </div>
               <CardMedia
                 component="img"
