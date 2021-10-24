@@ -15,28 +15,28 @@ export const Buy = (props) => {
       </div>
     </div>
   )
-  return (
-    <div
-      style={{ display: 'flex', height: 1000, backgroundColor: 'red', flexDirection: 'row' }}
-    >
-      {active ?
-        <>
-          <div style={{ height: '100%', backgroundColor: 'white', flex:1  }}>
-              <ArtistList></ArtistList>
-          </div>
-          <div style={{ height: '100%', backgroundColor: 'green', flex:1 }}>
-              <ActiveDeals></ActiveDeals>
-          </div>
-        </>
-        :
-        <div style={{width:"100%"}}>
-          <br></br>
-          <center>         
-          <h2> Please register your crpyto wallet with MetaMask.</h2>
-          </center>
-        </div>
-      }
-    </div>
+  // return (
+  //   <div
+  //     style={{ display: 'flex', height: 1000, backgroundColor: 'red', flexDirection: 'row' }}
+  //   >
+  //     {active ?
+  //       <>
+  //         <div style={{ height: '100%', backgroundColor: 'white', flex:1  }}>
+  //             <ArtistList></ArtistList>
+  //         </div>
+  //         <div style={{ height: '100%', backgroundColor: 'green', flex:1 }}>
+  //             <ActiveDeals></ActiveDeals>
+  //         </div>
+  //       </>
+  //       :
+  //       <div style={{width:"100%"}}>
+  //         <br></br>
+  //         <center>         
+  //         <h2> Please register your crpyto wallet with MetaMask.</h2>
+  //         </center>
+  //       </div>
+  //     }
+  //   </div>
 
-  )
+  // )
 }
