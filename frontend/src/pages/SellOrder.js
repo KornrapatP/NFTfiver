@@ -19,6 +19,8 @@ export const SellOrder = () => {
   } = useWeb3React()
   const params = useParams()
   const [details, setDetails] = useState(null)
+  const [file, setFile] = useState(null)
+  const [imageURL, setImageURL] = useState(null)
   useEffect(() => {
     async function setDeals() {
       const d = await transactionContractService.getActiveDeals(
@@ -30,11 +32,72 @@ export const SellOrder = () => {
     setDeals()
   }, [account])
 
-  console.log(details)
-  const handleCounterOrder = () => {}
+  const handleCounterOrder = () => { }
 
-  const handleAcceptOffer = () => {}
-  const handleSubmitWork = () => {}
+  const handleAcceptOffer = () => { }
+
+  const handleFileChange = (event) => {
+    setFile(Array.from(event.target.files)[0])
+  }
+
+
+
+  const handleSubmitWork = async () => {
+    if (file) {
+      let response = await transactionContractService.addImage({
+        name: file.name,
+        description: file.name,
+        image: file,
+        type: file.type
+      })
+      // response = response.replace("metadata.json", file.name)
+      response = response.replace("ipfs://", "https://ipfs.io/ipfs/")
+      console.log("debug : " + response)      
+
+      const getImageURLFromBlockchain = () => {
+        fetch(response)
+          .then(response => response.json())
+          .then(data => {
+            let URL = data.image
+            URL = URL.replace("ipfs://", "https://ipfs.io/ipfs/")            
+            setImageURL(URL)
+          })
+          .catch(error => console.log);
+      }
+      getImageURLFromBlockchain()
+      
+      // const registerWork = async () => {
+      //   fetch(imageURL)
+      //     .then(resp => resp.json())
+      //     .then(data => {
+      //       console.log(data)
+      //       console.log("Called?")
+      //     })
+      //     .catch(error => console.log);
+      // }
+      // registerWork()
+    }
+  }
+
+  useEffect(() => {
+    if (imageURL) {
+      const registerWork = async () => {
+        fetch(imageURL)
+          .then(resp => resp.json())
+          .then(data => {
+            console.log(data)
+            console.log("Called?")
+          })
+          .catch(error => console.log);
+      }
+      registerWork()
+
+      const submitWork = async () => {
+        await transactionContractService.submitWork(params.buyer, imageURL)
+      }
+      submitWork()
+    }
+  }, [imageURL])
 
   return (
     <div
@@ -56,7 +119,7 @@ export const SellOrder = () => {
         >
           <Card sx={{ minWidth: 275 }}>
             <CardContent style={{ flex: 1 }}>
-              
+
               <Typography
                 sx={{ fontSize: 14 }}
                 color="text.secondary"
@@ -100,9 +163,10 @@ export const SellOrder = () => {
                 sellerAccepted: {details.sellerAccepted ? 'TRUE' : 'FALSE'}
               </Typography>
               <div style={{ flexDirection: 'row', width: '100%', height: 100 }}>
-                <button onClick={handleCounterOrder}>Counter Offer</button>
-                <button onClick={handleAcceptOffer}>Accept Offer</button>
-                <button onClick={handleSubmitWork}>Submit Work</button>
+                <button onClick={handleCounterOrder}>Counter Offer</button><br />
+                <button onClick={handleAcceptOffer}>Accept Offer</button><br />
+                <input type="file" onChange={handleFileChange} />
+                <button onClick={handleSubmitWork}> Submit Work to blockchain!</button>
               </div>
               <CardMedia
                 component="img"

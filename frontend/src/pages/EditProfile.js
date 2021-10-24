@@ -87,7 +87,7 @@ export const EditProfile = () => {
       Description :
       <textarea value={description} onChange={handleChangeDescription}></textarea><br />
       <button className="disabled:opacity-50" onClick={handleSetInfo} > {valueChanged ? "Submit" : ""} </button><br/>
-      <img src="https://media.wired.com/photos/5b8999943667562d3024c321/master/w_120,c_limit/trash2-01.jpg"></img> <br/>
+      <img src="https://ipfs.io/ipfs/bafybeibbmxfn4uggk4zcyhmph3eqrqmsrponsarsw5g2o7d6dcrzkyjtfm/itachi3.jpg"></img> <br/>
       <input type="file" onChange={handleChangeFile}></input>
     </div>
   )
