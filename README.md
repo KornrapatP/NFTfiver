@@ -1,7 +1,7 @@
 # NFTfiver
 
 ## Welcome to our CalHacks project!
-Guide to trying it out for yourself! 
+Guide to trying it out for yourself! Demo available @ https://youtu.be/F_wO8rjvJIw
 1) Make sure you have all the dependencies and requirements installed. 
 2) Open terminal and cd to NFTfiver/FreelanceNFTs/ Use `python manage.py runserver` to launch Django Server. Alternatively, deploy this server in Azure or your preferred choice of cloud backend computing solution.
 3) Open terminal and cd to NFTfiver/frontend/ Use yarn to install dependencies, and run `yarn start` to start the frontend server.
